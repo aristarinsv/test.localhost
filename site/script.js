@@ -11,12 +11,24 @@ $(function() {
 		});
 
 		$("#tabs-2 button").click(function(){ 
-			getAddAjax($("#fio").val());//add
+			getAddAjax($("#fio").val());
 		});
+
+		$("#fio").on('keydown', function(event){
+			if(event.which == 13){
+				getAddAjax($("#fio").val());
+			}
+		})
 		
 		$("#tabs-1 button").click(function(){ 
-			getAjax("#tabs-1");//search
-        });
+			getAjax("#tabs-1");
+		});
+		
+		$("#search").on('keydown', function(event){
+			if(event.which == 13){
+				getAjax("#tabs-1");
+			}
+		})
 
 		function getAjax(sel){
 			if(sel == "#tabs-1") {
@@ -67,6 +79,7 @@ $(function() {
 				data: {type: "create"},
 				success: function(data) {
 					getAjax("#tabs-2");
+					$("#fio").val('');
 				},
 			  });			
 		}
