@@ -33,7 +33,6 @@ $(function() {
 		function getAjax(sel){
 			if(sel == "#tabs-1") {
 				var search = $("#search").val();
-				var nameLike = search ? search : "";
 				$("#myTable .ui-widget-content").children().remove();
 				$.get("api/users", {"name_like": search}, function(data) {
 					addTableData(data);
