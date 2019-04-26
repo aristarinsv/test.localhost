@@ -45,9 +45,9 @@ $app->put('/update/{id}', function ($request, $response, $args) use ($db, $app) 
        }
 });
 $app->delete('/delete/{id}', function ($request, $response) use ($db) {
-    $emp = json_decode($request->getBody());
+    //$emp = json_decode($request->getBody());
 	$id = $request->getAttribute('id');
-    $sql = "DELETE FROM users WHERE idusers=:id";
+    $sql = "DELETE FROM users WHERE idusers=:idusers";
     try {
         $stmt = $db->prepare($sql);
         $stmt->bindParam("idusers", $id);

@@ -49,6 +49,16 @@ $(function() {
 			  });			
 		}
 
+		function getDelAjax(id){
+			$.ajax({
+				url: "api/delete/"+id,
+				type: 'DELETE',
+				data: {type: "del"},
+				success: function(data) {
+					getAjax("#tabs-2");
+				},
+			  });			
+		}
 
 		function getAddAjax(val){
 			$.ajax({
@@ -80,6 +90,7 @@ $(function() {
 				tr.append("<td>" + v.idusers + "</td>");
 				tr.append("<td class='edit usersname " + v.idusers + "'>" + v.usersname + "</td>");
 				tr.append("<td class='edit usersstatus " + v.idusers + "'>" + v.usersstatus + "</td>");
+				tr.append("<td class='del'><a class='" + v.idusers + "' title='Удалить запись' href='#'>&#10006;</a></td>");
 				$("#myEditTable .ui-widget-content").append(tr);
 			});
 		}
@@ -91,6 +102,13 @@ $(function() {
 			$(this).addClass('ajax');
 			$(this).html('<input id="editbox" size="'+ $(this).text().length+'" type="text" value="' + $(this).text() + '" />');
 			$('#editbox').focus();
+		});
+
+		$("#myEditTable .ui-widget-content").on('click', "td.del a", function(){
+			if( confirm('Вы действительно хотите удалить запись?') ) {
+				var arr = $(this).attr('class').split( " " );
+				getDelAjax(arr[0]);
+			}
 		});
 
 
