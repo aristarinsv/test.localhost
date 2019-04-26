@@ -1,5 +1,5 @@
 # test.localhost
-Create mysql db with contact.sql
+Create mysql db with users.sql
 
 Add db settings in file dbCnf.php
 
