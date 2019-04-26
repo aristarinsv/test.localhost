@@ -127,10 +127,15 @@ $(function() {
 		$("#myEditTable .ui-widget-content").on('keydown', "td.edit", function(event){
 			var arr = $(this).attr('class').split( " " );
 			var val = $('.ajax input').val();
-			if(event.which == 13)
-			{
+			if(event.which == 13) {
 				getEditAjax(arr[2], arr[1], val);
 			}
+		});
+
+		$("#myEditTable .ui-widget-content").on("blur", "td.edit", function(event){
+			var arr = $(this).attr('class').split( " " );
+			var val = $('.ajax input').val();
+			getEditAjax(arr[2], arr[1], val);
 		});
 
 });
